@@ -1,0 +1,9 @@
+-r requirements.txt
+coverage>=7.3.2
+flake8>=6.1.0
+flake8-pyproject>=1.2.3
+mypy>=1.6.1
+pylint>=3.0.2
+pytest>=7.4.3
+hypothesis>=6.111.1
+torchvision>=0.18.1

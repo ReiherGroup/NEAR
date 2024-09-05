@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "near_score"
+dynamic = [
+    "version",
+    "dependencies"
+]
+authors = [
+    { name="Raphael T. Husistein" },
+    { name="Markus Reiher" },
+    { name="Marco Eckhoff" },
+]
+maintainers = [
+    {name = "Raphael T. Husistein", email = "lifelong_ml@phys.chem.ethz.ch" }
+]
+description = "An implementation of the NEAR score."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Natural Language :: English",
+]
+
+[project.urls]
+Homepage = "https://github.com/ReiherGroup/NEAR"
+Issues = "https://github.com/ReiherGroup/NEAR/issues"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.dynamic]
+version = {attr = "near_score._version_.__version__"}
+dependencies = {file = ["requirements.txt"]}
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+]
+
+[tool.flake8]
+max-line-length = 120
+exclude = [
+    "__init__.py",
+    ".git",
+    "__pycache__"
+]
+
+[tool.pylint.format]
+max-line-length = 120
+
+[[tool.mypy.overrides]]
+module = [
+    "scipy.*",
+    "near_score",
+    "torchvision.*",
+    "matplotlib.*",
+]
+ignore_missing_imports = true
